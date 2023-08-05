@@ -49,8 +49,8 @@ try:
     # 1. Скопируем текст с ответом.
     answer_green = browser.switch_to.alert.text
     # 2. Удалим лишний текст.
-    # В настоящее время "костыль", т.к. метод split даёт на выходе, например, такое: ['', '29.035249889140367']
-    answer = answer_green.split("Congrats, you've passed the task! Copy this code as the answer to Stepik quiz: ")
+    answer = answer_green.removeprefix(
+        "Congrats, you've passed the task! Copy this code as the answer to Stepik quiz: ")
 
     # Внесём результаты расчёта в форму для ответа на задание, страница: 2.4 Настройка ожиданий, шаг 8.
     send_auto.send_answer(answer, L_URL)
